@@ -1,1 +1,2 @@
-console.log('program start');
+console.log('program starting ...');
+console.log('done');
