@@ -1,0 +1,24 @@
+{
+  "name": "jenkins-1",
+  "version": "1.0.0",
+  "description": "ci, cd, cypress, jenkis",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "ci": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yong-asial/jenkins-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yong-asial/jenkins-1/issues"
+  },
+  "homepage": "https://github.com/yong-asial/jenkins-1#readme",
+  "devDependencies": {
+    "cypress": "^3.6.1"
+  }
+}
