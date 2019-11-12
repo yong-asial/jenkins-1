@@ -52,6 +52,7 @@ pipeline {
             steps {
                 echo 'Run e2e test on stg.'
                 sh 'npm run ci'
+                sh 'exit 1'
             }
         }
         stage('Deploy - Production') {
@@ -69,18 +70,22 @@ pipeline {
         }
         success {
             echo 'This will run only if successful'
+            /*
             mail to: 'yong@asial.co.jp',
                  subject: "Success: ${currentBuild.fullDisplayName}",
                  body: "Url ${env.BUILD_URL}"
             slackSend channel: '#m-bot-jenkins',
                   color: 'good',
                   message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+                  */
         }
         failure {
             echo 'This will run only if failed'
+            /*
             mail to: 'yong@asial.co.jp',
                  subject: "Failed: ${currentBuild.fullDisplayName}",
                  body: "Url ${env.BUILD_URL}"
+                 */
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
