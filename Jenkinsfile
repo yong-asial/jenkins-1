@@ -38,18 +38,25 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy - Staging') {
             steps {
                 timeout(time: 3, unit: 'MINUTES') {
                     retry(5) {
                         sh 'npm run start'
+                        echo 'deploy staging'
                     }
                 }
             }
         }
-        stage('Test') {
+        stage('e2e Test') {
             steps {
+                echo 'Run e2e test on stg.'
                 sh 'npm run ci'
+            }
+        }
+        stage('Deploy - Production') {
+            steps {
+                echo 'deploy production'
             }
         }
     }
