@@ -58,12 +58,22 @@ pipeline {
             echo 'This will always run'
             archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', fingerprint: true
             echo 'saved artifact'
+            deleteDir() /* clean up our workspace */
         }
         success {
             echo 'This will run only if successful'
+            mail to: 'yong@asial.co.jp',
+                 subject: "Success: ${currentBuild.fullDisplayName}",
+                 body: "Url ${env.BUILD_URL}"
+            slackSend channel: '#m-bot-jenkins',
+                  color: 'good',
+                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
         failure {
             echo 'This will run only if failed'
+            mail to: 'yong@asial.co.jp',
+                 subject: "Failed: ${currentBuild.fullDisplayName}",
+                 body: "Url ${env.BUILD_URL}"
         }
         unstable {
             echo 'This will run only if the run was marked as unstable'
