@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('System Info') {
+            steps {
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'echo "Hello World"'
