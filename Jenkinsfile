@@ -1,8 +1,22 @@
 pipeline {
-    agent any
+    agent {
+        label '!Windows'
+    }
+    environment {
+        ENV1 = 'true'
+        ENV2 = 'data'
+    }
     stages {
+        stage('Use Env') {
+            steps {
+                echo "ENV1 is ${ENV1}"
+                echo "ENV2 is ${ENV2}"
+                sh 'printenv'
+            }
+        }
         stage('System Info') {
             steps {
+                sh 'pwd'
                 sh 'node -v'
                 sh 'npm -v'
             }
