@@ -13,10 +13,14 @@ pipeline {
             }
         }
         stage('Deploy') {
-            sh 'npm run start'
+            steps {
+                sh 'npm run start'                
+            }
         }
         stage('Test') {
-            sh 'npm run ci'
+            steps {
+                sh 'npm run ci'
+            }
         }
     }
 }
