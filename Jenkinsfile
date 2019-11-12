@@ -9,9 +9,14 @@ pipeline {
                     ls -lah
                 '''
                 sh 'npm ci'
-                sh 'npm run start'
-                sh 'npm run ci'
+                sh 'npm run build'
             }
+        }
+        stage('Deploy') {
+            sh 'npm run start'
+        }
+        stage('Test') {
+            sh 'npm run ci'
         }
     }
 }
