@@ -49,13 +49,15 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm run ci; exit 1'
+                sh 'npm run ci'
             }
         }
     }
     post {
         always {
             echo 'This will always run'
+            archiveArtifacts artifacts: 'cypress/videos/**/*.mp4', fingerprint: true
+            echo 'saved artifact'
         }
         success {
             echo 'This will run only if successful'
