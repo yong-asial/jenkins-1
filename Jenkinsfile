@@ -52,7 +52,13 @@ pipeline {
             steps {
                 echo 'Run e2e test on stg.'
                 sh 'npm run ci'
-                sh 'exit 1'
+                // sh 'exit 1'
+            }
+        }
+        stage('Sanity Check') {
+            steps {
+                echo 'Required human check'
+                input "Does the staging environment look ok?"
             }
         }
         stage('Deploy - Production') {
