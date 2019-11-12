@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm run ci'
+                sh 'npm run ci; exit 1'
             }
         }
     }
